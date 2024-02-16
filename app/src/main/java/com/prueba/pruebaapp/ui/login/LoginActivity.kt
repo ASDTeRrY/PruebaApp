@@ -22,8 +22,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        binding.inputUsername.setText("Admin")
-        binding.inputPassword.setText("Password*123")
+ /*       binding.inputUsername.setText("Admin")
+        binding.inputPassword.setText("Password*123")*/
 
         binding.btnLogin.setOnClickListener {
             if (binding.inputUsername.text.toString() ==("Admin") && binding.inputPassword.text.toString() ==("Password*123")){

@@ -6,9 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.prueba.pruebaapp.R
-import com.prueba.pruebaapp.domain.model.DataModel
 import com.prueba.pruebaapp.domain.model.DetailModel
-import com.prueba.pruebaapp.domain.model.MovieModel
 
 class DataAdapter (private var list : List<DetailModel>, private val onItemClick: (DetailModel) -> Unit): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 

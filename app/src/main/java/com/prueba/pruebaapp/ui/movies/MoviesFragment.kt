@@ -11,10 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.prueba.pruebaapp.R
 import com.prueba.pruebaapp.databinding.FragmentMoviesBinding
-import com.prueba.pruebaapp.domain.model.DataModel
-import com.prueba.pruebaapp.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

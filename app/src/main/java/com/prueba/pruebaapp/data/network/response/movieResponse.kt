@@ -1,6 +1,7 @@
 package com.prueba.pruebaapp.data.network.response
 
 import com.google.gson.annotations.SerializedName
+import com.prueba.pruebaapp.data.db.entity.MovieEntity
 import com.prueba.pruebaapp.domain.model.DetailModel
 import com.prueba.pruebaapp.domain.model.MovieModel
 
@@ -13,6 +14,9 @@ data class MovieResponse(
             page = page,
             detailResponse = detailResponse.toDataModelList()
         )
+    }
+    fun toDomainEntity(): List<MovieEntity>{
+        return detailResponse.toDataEntityList()
     }
 }
 
@@ -35,7 +39,22 @@ fun DetailResponse.toDataModel(): DetailModel{
         overview
     )
 }
-
 fun List<DetailResponse>.toDataModelList(): List<DetailModel>{
     return map { it.toDataModel() }
+}
+
+fun DetailResponse.toDataEntity(): MovieEntity{
+    return MovieEntity(
+        id,
+        "https://image.tmdb.org/t/p/w500$posterPath",
+        title,
+        voteAverage,
+        releaseDate,
+        overview
+
+    )
+}
+
+fun List<DetailResponse>.toDataEntityList(): List<MovieEntity>{
+    return map { it.toDataEntity() }
 }
