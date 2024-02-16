@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -37,6 +39,10 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    kotlin{
+        jvmToolchain(8)
+    }
+
 }
 
 dependencies {
@@ -56,4 +62,12 @@ dependencies {
 
     //RecyclerView
     implementation("com.github.sparrow007:carouselrecyclerview:1.2.6")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    //DaggerHilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 }
