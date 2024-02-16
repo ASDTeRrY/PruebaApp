@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.prueba.pruebaapp.R
 import com.prueba.pruebaapp.domain.model.DataModel
+import com.prueba.pruebaapp.domain.model.DetailModel
+import com.prueba.pruebaapp.domain.model.MovieModel
 
-class DataAdapter (private var list : ArrayList<DataModel>, private val onItemClick: (DataModel) -> Unit): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+class DataAdapter (private var list : List<DetailModel>, private val onItemClick: (DetailModel) -> Unit): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image : ImageView = itemView.findViewById(R.id.image)
@@ -25,30 +27,30 @@ class DataAdapter (private var list : ArrayList<DataModel>, private val onItemCl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
-        Glide.with(holder.image).load(list.get(position).img).into(holder.image)
+        Glide.with(holder.image).load(list.get(position).posterPath).into(holder.image)
         holder.itemView.setOnClickListener {
             onItemClick(item)
         }
     }
 
-    fun updateData(list: ArrayList<DataModel>) {
+    fun updateData(list: ArrayList<DetailModel>) {
         this.list = list
         notifyDataSetChanged()
     }
 
     //Use the method for item changed
-    fun itemChanged() {
+/*    fun itemChanged() {
         // remove last item for test purposes
-        this.list[0] = (DataModel(R.drawable.londonlove, "Thi is cool"))
+        this.list[0] = (MovieModel(R.drawable.londonlove, "Thi is cool"))
         notifyItemChanged(0)
 
-    }
+    }*/
 
     //Use the method for checking the itemRemoved
     fun removeData() {
         // remove last item for test purposes
         val orgListSize = list.size
-        this.list = this.list.subList(0, orgListSize - 1).toList() as ArrayList<DataModel>
+        this.list = this.list.subList(0, orgListSize - 1).toList() as ArrayList<DetailModel>
         notifyItemRemoved(orgListSize - 1)
     }
 }
