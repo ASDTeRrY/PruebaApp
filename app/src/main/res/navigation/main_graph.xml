@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/moviesFragment">
 
     <activity
         android:id="@+id/mainActivity"
@@ -16,8 +16,18 @@
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.prueba.pruebaapp.ui.movies.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/detailFragment"
         android:name="com.prueba.pruebaapp.ui.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+
 </navigation>

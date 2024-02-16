@@ -2,4 +2,10 @@
     <string name="app_name">PruebaApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_tittle">MOBILE APPLICATION DEVELOPMENT"</string>
+    <string name="login_user">Usuario"</string>
+    <string name="login_password">Contraseña"</string>
+    <string name="login_button">Login"</string>
+
+    <string name="login_error">Datos Incorrectos"</string>
 </resources>
