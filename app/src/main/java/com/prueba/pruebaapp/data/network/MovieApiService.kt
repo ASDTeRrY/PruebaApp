@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface MovieApiService {
-    @GET("?page={page}&api_key={api_key}")
-    suspend fun getMovies(@Path("page") page: String, @Path("api_key") apiKey: String): MovieResponse
+    @GET("upcoming?page=1&api_key=f46b58478f489737ad5a4651a4b25079")
+    suspend fun getMovies(): MovieResponse
 }

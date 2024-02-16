@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(private val apiService: MovieApiService): Repository {
     override suspend fun getMovies(page: String, apiKey: String): MovieModel? {
-        runCatching { apiService.getMovies(page, apiKey) }
+        runCatching { apiService.getMovies() }
             .onSuccess {return it.toDomain()}
             .onFailure { Log.i("ASD.sLyon", "Error getMovies ${it.message}") }
         return null

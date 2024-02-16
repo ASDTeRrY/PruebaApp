@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.prueba.pruebaapp.R
 import com.prueba.pruebaapp.databinding.FragmentMoviesBinding
 import com.prueba.pruebaapp.domain.model.DataModel
@@ -56,20 +57,16 @@ class MoviesFragment : Fragment() {
     private fun successState(movie: MoviesState.Success) {
         binding.pb.isVisible = false
         binding.recycler.isVisible = true
-        /*    binding.btnCLick.setOnClickListener {
-findNavController().navigate(MoviesFragmentDirections.actionMoviesFragmentToDetailFragment())
-}*/
 
 
         val adapter = DataAdapter(movie.movie.detailResponse){item ->
-            //requireContext().showToast(item.text)
+            findNavController().navigate(MoviesFragmentDirections.actionMoviesFragmentToDetailFragment(item.id))
         }
 
         binding.recycler.apply {
             this.adapter = adapter
             set3DItem(true)
             setAlpha(true)
-
         }
     }
 
