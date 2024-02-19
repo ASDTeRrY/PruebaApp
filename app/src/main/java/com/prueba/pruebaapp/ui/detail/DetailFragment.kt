@@ -15,9 +15,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.prueba.pruebaapp.R
 import com.prueba.pruebaapp.databinding.FragmentDetailBinding
-import com.prueba.pruebaapp.ui.movies.DataAdapter
-import com.prueba.pruebaapp.ui.movies.MoviesFragmentDirections
-import com.prueba.pruebaapp.ui.movies.MoviesState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
