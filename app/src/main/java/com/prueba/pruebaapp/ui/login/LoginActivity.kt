@@ -18,7 +18,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         initUI()
 
-
     }
 
     private fun initUI() {

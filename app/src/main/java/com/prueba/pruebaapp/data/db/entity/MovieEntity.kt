@@ -1,5 +1,6 @@
 package com.prueba.pruebaapp.data.db.entity
 
+import com.prueba.pruebaapp.domain.model.DetailModel
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
 
@@ -20,5 +21,15 @@ open class MovieEntity(): RealmObject {
         this.releaseDate = releaseDate
         this.overview = overview
     }
+}
+fun fromEntity(entity: MovieEntity): DetailModel {
+    return DetailModel(
+        entity.id,
+        entity.posterPath,
+        entity.title,
+        entity.voteAverage,
+        entity.releaseDate,
+        entity.overview
+    )
 }
 

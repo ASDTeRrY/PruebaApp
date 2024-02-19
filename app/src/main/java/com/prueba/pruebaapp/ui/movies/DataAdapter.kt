@@ -25,13 +25,13 @@ class DataAdapter (private var list : List<DetailModel>, private val onItemClick
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
-        Glide.with(holder.image).load(list.get(position).posterPath).into(holder.image)
+        Glide.with(holder.image).load(list.get(position).posterPath).placeholder(R.drawable.hacker).into(holder.image)
         holder.itemView.setOnClickListener {
             onItemClick(item)
         }
     }
 
-    fun updateData(list: ArrayList<DetailModel>) {
+    fun updateData(list: List<DetailModel>) {
         this.list = list
         notifyDataSetChanged()
     }

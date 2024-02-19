@@ -2,6 +2,7 @@ package com.prueba.pruebaapp.ui.movies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.prueba.pruebaapp.domain.model.MovieModel
 import com.prueba.pruebaapp.domain.usecase.GetMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MoviesViewModel @Inject constructor(private val getMovieUseCase: GetMovieUseCase) :ViewModel(){
 
-    private var _state = MutableStateFlow<MoviesState>(MoviesState.Loading)
-    val state: StateFlow<MoviesState> = _state
+    private var _state = MutableStateFlow<MoviesState<MovieModel>>(MoviesState.Loading)
+    val state: StateFlow<MoviesState<MovieModel>> = _state
 
     fun getMovie(page: String, apiKey: String){
         viewModelScope.launch {
@@ -28,5 +29,4 @@ class MoviesViewModel @Inject constructor(private val getMovieUseCase: GetMovieU
             }
         }
     }
-
 }

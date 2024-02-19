@@ -2,18 +2,19 @@ package com.prueba.pruebaapp.data
 
 import android.util.Log
 import com.prueba.pruebaapp.data.db.LocalDataBase
+import com.prueba.pruebaapp.data.db.entity.fromEntity
 import com.prueba.pruebaapp.data.network.MovieApiService
 import com.prueba.pruebaapp.domain.Repository
 import com.prueba.pruebaapp.domain.model.DetailModel
 import com.prueba.pruebaapp.domain.model.MovieModel
-import com.prueba.pruebaapp.domain.model.MovieModel.Companion.fromEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
-class RepositoryImpl @Inject constructor(private val apiService: MovieApiService, private val localDB: LocalDataBase): Repository {
+class RepositoryImpl @OptIn(ExperimentalCoroutinesApi::class)
+@Inject constructor(private val apiService: MovieApiService, private val localDB: LocalDataBase): Repository {
     @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun getMovies(page: String, apiKey: String): MovieModel? {
-        runCatching { apiService.getMovies() }
+        runCatching { apiService.getMovies(page, apiKey) }
             .onSuccess {
                 runCatching {
                     localDB.saveMovie(it.toDomainEntity())

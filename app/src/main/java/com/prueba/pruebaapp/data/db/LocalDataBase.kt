@@ -11,24 +11,18 @@ import javax.inject.Singleton
 
 @ExperimentalCoroutinesApi
 @Singleton
-class LocalDataBase @Inject constructor(): LocalDataBaseImpl{
+class LocalDataBase @Inject constructor(private val realm: Realm) : LocalDataBaseImpl {
     override suspend fun saveMovie(movieEntity: List<MovieEntity>) {
-        val config = RealmConfiguration.create(schema = setOf(MovieEntity::class))
-        val realm: Realm = Realm.open(config)
-        realm.writeBlocking  {
+        realm.writeBlocking {
             for (entity in movieEntity) {
                 copyToRealm(entity)
             }
         }
-        realm.close()
     }
 
     override suspend fun getMovie(id: Int): MovieEntity {
-        val config = RealmConfiguration.create(schema = setOf(MovieEntity::class))
-        val realm: Realm = Realm.open(config)
-        val incompleteItems: RealmResults<MovieEntity> =
-            realm.query<MovieEntity>("id == $id")
-                .find()
-        return incompleteItems.first()
+        return realm.query<MovieEntity>("id == $id")
+            .find()
+            .first()
     }
 }
